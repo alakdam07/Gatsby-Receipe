@@ -10,9 +10,7 @@ export default function SingleRecipePage({ data }: Props): ReactElement {
   const recipe = data?.allFood?.nodes?.map(i => i);
   const newRecipe = recipe[0]
   const ingre = newRecipe.ingredients
-  var result = ingre.split(',')
-    .map(word => `${word.trim()}`)
-    .join(', ');
+  var result = ingre?.split(',')?.map(word => `${word.trim()}`)?.join(', ');
 
   return (
     <>
