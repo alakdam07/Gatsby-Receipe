@@ -10,7 +10,15 @@ export default function SingleRecipePage({ data }: Props): ReactElement {
   const recipe = data?.allFood?.nodes?.map(i => i);
   const newRecipe = recipe[0]
   const ingre = newRecipe.ingredients
-  var result = ingre?.split(',')?.map(word => `${word.trim()}`)?.join(', ');
+  const result = ingre?.split(',')?.map(word => `${word.trim()}`)?.join(', ');
+  const images = [
+    "https://res.cloudinary.com/drewzxzgc/image/upload/v1601973393/d3vdnihr3zytiatnzppi.jpg",
+    "https://res.cloudinary.com/drewzxzgc/image/upload/v1601973810/fqmcryloodyg19lx6gxf.jpg",
+    "https://res.cloudinary.com/drewzxzgc/image/upload/v1601974097/eum3csjpdvvnhmkhgoek.jpg",
+    "https://res.cloudinary.com/drewzxzgc/image/upload/v1601974157/oinefdsu4zqn1r115s6k.jpg"
+  ];
+
+  const RandomImages = Math.floor(Math.random() * images.length);
 
   return (
     <>
@@ -25,7 +33,7 @@ export default function SingleRecipePage({ data }: Props): ReactElement {
           <a href={newRecipe.source}>More info</a>
         </div>
 
-        <Image src={newRecipe.photoUrl} alt={newRecipe.title} />
+        <Image src={newRecipe.photoUrl === "" ? images[RandomImages] : newRecipe.photoUrl} alt={newRecipe.title} />
       </RecipeGrid>
     </>
   )
